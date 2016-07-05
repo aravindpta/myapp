@@ -1,0 +1,324 @@
+
+{% load static %}
+
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Home Page of Aravind Sunil</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="{% static "boot/css/bootstrap.min.css"%}" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="{% static "boot/css/grayscale.css"%}" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+   
+    <link href="http://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top">
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-custom navbar-fixed-top" role="navigation" style="background-color:#337AB7;">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-main-collapse">
+                    <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <i class="fa fa-play-circle"></i>  <span class="light">Aravind Sunil</span> 
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse navbar-right navbar-main-collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Hidden li included to remove active class from about link when scrolled up past about section -->
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#about"><i class="fa fa-github fa-fw"></i>About Me</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#download"></a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="/analyzer/comparison"></a>
+                    </li>
+                    {% if user.is_authenticated %}
+                      <li class="dropdown pull-right">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle nav navbar-nav">{{user}} <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                    <li><a href="/analyzer/history">History</a></li>
+                    <li><a href="/analyzer/logout/">Logout</a></li>
+                     
+                </li>
+                    {% else %}
+                    <li>
+                        <a class="page-scroll" href="/analyzer/login"></a>
+                    </li>
+                    {%endif %}
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Intro Header -->
+    <header class="intro">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-8 col-md-offset-2">
+                        <h1 class="brand-heading"><!--Product Analyzer--></h1>
+                        <p class="intro-text">Hey, you have reached my personal page!</p>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <hr>
+    <!-- About Section -->
+
+    <section id="about" class="container content-section text-center">
+    
+        <div class="row">
+<div class="col-sm-9 col-centered" contenteditable="false" style="margin:auto;float:none;">
+            <div class="panel panel-default ">
+                <div class="panel-heading">About Us</div>
+                <div class="panel-body" style="text-align:justify;"> <p> Sentiment Analysis is the process of determining 'tone' within the context of a given text. The text may be the attitude, opinion or feeling toward something such as a person, organization, product or location. Use our free sentiment analysis web app to analyze product reviews of mobile phones.</p>
+                <p>If you are in search of a mobile phone, rating it's features based on user reviews would be much more useful than raw ratings in online portals.This helps you correctly decide your product. We are dynamically collecting user reviews from leading online shopping stores upon your request and analyzes it to display the result.</p>
+                <p>Just enter your mobile phone model and we will return you with the ratings after analysis.</p>
+
+                </div>
+            </div>
+            
+        </div>
+    </section>
+    <hr>
+    <!-- Download Section -->
+    <section id="download" class="content-section text-center">
+        <div class="download-section">
+            <div class="container">
+                <div class="col-sm-9 col-centered" contenteditable="false" style="margin:auto;float:none;">
+                <a href='/analyzer/search.html'><button type="button" class="btn btn-info" >Click Here to Analyze a Custom Review</button></a>
+                <hr style="border-top:1px solid #fff;">
+                <div class="panel panel-default ">
+                <div class="panel-heading">Search For Products</div>
+                 
+            </div>
+                    <div class="first "></div>
+                    <form action="/test/">
+                        <select name="select" class="form-control">
+                                 <option value="analysis">Analysis</option>
+                                 <option value="reviews">reviews</option>
+                        </select>
+                        <hr style="border-top:1px solid #fff;">
+                        <select name="site" class="form-control">
+                                 <option value="flipkart">Flipkart</option>
+                                 <option value="amazon">Amazon</option>
+                        </select>
+                        <hr style="border-top:1px solid #fff;">
+                        <select name="category" class="form-control">
+                                 <option value="phones">Phones</option>
+                                 <option value="laptops">Laptops</option>
+                        </select>
+                        <hr style="border-top:1px solid #fff;">
+                        <input type="search" class="form-control" name = "search" placeholder="search">
+                        <hr style="border-top:1px solid #fff;">
+                        <button type="submit" name="submit" value="submit" class="btn btn-primary ">Go</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <hr>
+    <!-- Contact Section -->
+    <section id="contact" class="container content-section text-center">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2">
+                <div class="panel panel-default ">
+                <div class="panel-heading">Stay In Touch with Me!</div>
+                <div class="panel-body" > <p>Feel free to contact me to provide some feedback on the content, suggestions or anything else!</p>
+
+                </div>
+            </div>
+                <p><a href="https://gmail.com" target="_blank">aravindsunilkumarpta@gmail.com
+                </a><br>
+                <a href="#">8547292579
+                </a>
+                </p>
+                <ul class="list-inline banner-social-buttons">
+                    <li>
+                        <a href="https://www.linkedin.com/in/aravindsunil" target="_blank" class="btn btn-primary btn-lg"><i class="fa fa-twitter fa-fw"></i> <span class="network-name">LinkedIn</span></a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/aravind.sunil/" target="_blank" class="btn btn-primary btn-lg"><i class="fa fa-github fa-fw"></i> <span class="network-name">Facebook</span></a>
+                    </li>
+                    <li>
+                        <a href="https://plus.google.com/+Startbootstrap/posts" target="_blank" class="btn btn-primary btn-lg"><i class="fa fa-google-plus fa-fw"></i> <span class="network-name">Google+</span></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <div id="map"></div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container text-center">
+            <p></p>
+        </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="{% static "boot/js/jquery.js"%}"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="{% static "boot/js/bootstrap.min.js"%}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{% static "boot/js/jquery.easing.min.js"%}"></script>
+
+    <!-- Google Maps API Key - Use your own API key to enable the map feature. More information on the Google Maps API can be found at https://developers.google.com/maps/ -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=
+    AIzaSyCwAqit0m-2MAO6sYy3LYFLRCcbIPIAeD0&sensor=false">
+    var myCenter=new google.maps.LatLng(51.508742,-0.120850);
+
+function initialize()
+{
+var mapProp = {
+  center: myCenter,
+  zoom:5,
+  mapTypeId: google.maps.MapTypeId.ROADMAP
+  };
+
+var map = new google.maps.Map(document.getElementById("map"),mapProp);
+
+var marker = new google.maps.Marker({
+  position: myCenter,
+  title:'Click to zoom'
+  });
+
+marker.setMap(map);
+
+// Zoom to 9 when clicking on marker
+google.maps.event.addListener(marker,'click',function() {
+  map.setZoom(9);
+  map.setCenter(marker.getPosition());
+  });
+}
+google.maps.event.addDomListener(window, 'load', initialize);
+    </script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="{% static "boot/js/grayscale.js"%}"></script>
+
+</body>
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="circle-progress.js">
+    $('.first').circleProgress({
+/**
+ * This is the only required option. It should be from 0.0 to 1.0
+ * @type {number}
+ */
+value: 0.0,
+ 
+/**
+ * Size of the circle / canvas in pixels
+ * @type {number}
+ */
+size: 100.0,
+ 
+/**
+ * Initial angle for 0.0 value in radians
+ * @type {number}
+ */
+startAngle: -Math.PI,
+ 
+/**
+ * Width of the arc. By default it's auto-calculated as 1/14 of size, but you may set it explicitly in pixels
+ * @type {number|string}
+ */
+thickness: 'auto',
+ 
+/**
+ * Fill of the arc. You may set it to:
+ *   - solid color:
+ *   - { color: '#3aeabb' }
+ *   - { color: 'rgba(255, 255, 255, .3)' }
+ *   - linear gradient (left to right):
+ *   - { gradient: ['#3aeabb', '#fdd250'], gradientAngle: Math.PI / 4 }
+ *   - { gradient: ['red', 'green', 'blue'], gradientDirection: [x0, y0, x1, y1] }
+ *   - image:
+ *   - { image: 'http://i.imgur.com/pT0i89v.png' }
+ *   - { image: imageObject }
+ *   - { color: 'lime', image: 'http://i.imgur.com/pT0i89v.png' } - color displayed until the image is loaded
+ */
+fill: {
+  gradient: ['#3aeabb', '#fdd250']
+},
+ 
+/**
+ * Color of the "empty" arc. Only a color fill supported by now
+ * @type {string}
+ */
+emptyFill: 'rgba(0, 0, 0, .1)',
+ 
+/**
+ * <a href="http://www.jqueryscript.net/animation/">Animation</a> config (see jQuery animations: http://api.jquery.com/animate/)
+ */
+animation: {
+  duration: 1200,
+  easing: 'circleProgressEasing'
+},
+ 
+/**
+ * Default animation starts at 0.0 and ends at specified `value`. Let's call this direct animation.
+ * If you want to make reversed animation then you should set `animationStartValue` to 1.0.
+ * Also you may specify any other value from 0.0 to 1.0
+ * @type {number}
+ */
+animationStartValue: 0.0,
+ 
+/**
+ * Reverse animation and arc draw
+ * @type {boolean}
+ */
+reverse: false,
+ 
+/**
+ * Arc line cap ('butt' (default), 'round' and 'square')
+ * Read more: https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D.lineCap
+ * @type {string}
+ */
+lineCap: 'butt',
+});
+</script>
+   
